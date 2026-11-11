@@ -533,3 +533,7 @@ plugin/               plugin Figma đi kèm (manifest, main thread, UI relay)
 examples/             script gọi tool không cần agent
 test/                 bộ kiểm thử
 ```
+
+---
+
+Dự án phát hành theo giấy phép [MIT](LICENSE): được dùng, sửa, phân phối tự do, kể cả cho mục đích thương mại, miễn giữ nguyên thông báo bản quyền.

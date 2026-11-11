@@ -189,3 +189,7 @@ src/
 plugin/               companion Figma plugin (manifest, main thread, UI relay)
 examples/             call-tool.mjs: call a tool from a script, without an agent
 ```
+
+## License
+
+[MIT](LICENSE)
