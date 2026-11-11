@@ -1,0 +1,22 @@
+{
+  "name": "Figma MCP Bridge",
+  "id": "figma-mcp-bridge-local",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "editorType": ["figma", "figjam"],
+  "documentAccess": "dynamic-page",
+  "enablePrivatePluginApi": true,
+  "permissions": ["currentuser", "teamlibrary"],
+  "networkAccess": {
+    "allowedDomains": ["none"],
+    "devAllowedDomains": [
+      "ws://localhost:3850",
+      "ws://localhost:3851",
+      "ws://localhost:3852",
+      "ws://localhost:3853",
+      "ws://localhost:3854"
+    ],
+    "reasoning": "Connects to the Figma MCP server running on this computer so an AI agent can read and edit the open file."
+  }
+}

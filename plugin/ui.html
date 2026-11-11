@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        margin: 0;
+        padding: 12px 14px;
+        font: 12px/1.45 Inter, system-ui, sans-serif;
+        color: var(--figma-color-text, #1e1e1e);
+        background: var(--figma-color-bg, #fff);
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--figma-color-icon-tertiary, #b3b3b3);
+        flex: none;
+      }
+      .dot.on {
+        background: var(--figma-color-icon-success, #14ae5c);
+      }
+      .title {
+        font-weight: 600;
+      }
+      .muted {
+        color: var(--figma-color-text-secondary, #757575);
+        margin-top: 6px;
+      }
+      code {
+        font-family: ui-monospace, Menlo, Consolas, monospace;
+        font-size: 11px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row"><span id="dot" class="dot"></span><span id="status" class="title">Looking for the MCP server…</span></div>
+    <div id="file" class="muted"></div>
+    <div id="ports" class="muted"></div>
+    <script>
+      const PORTS = [3850, 3851, 3852, 3853, 3854];
+      const sockets = {};
+      let hello = null;
+      let lastContext = null;
+
+      function openSockets() {
+        return PORTS.filter((p) => sockets[p] && sockets[p].readyState === WebSocket.OPEN);
+      }
+
+      function render() {
+        const open = openSockets();
+        document.getElementById('dot').className = 'dot' + (open.length ? ' on' : '');
+        document.getElementById('status').textContent = open.length
+          ? `Connected to ${open.length} MCP server${open.length > 1 ? 's' : ''}`
+          : 'Waiting for the MCP server…';
+        document.getElementById('file').textContent = hello ? `File: ${hello.fileName}` : '';
+        document.getElementById('ports').innerHTML = open.length
+          ? `Ports <code>${open.join(', ')}</code>. Keep this window open.`
+          : `Scanning <code>localhost:${PORTS[0]}–${PORTS[PORTS.length - 1]}</code>`;
+      }
+
+      function connect(port) {
+        if (!hello) return;
+        const existing = sockets[port];
+        if (existing && existing.readyState <= WebSocket.OPEN) return;
+        let ws;
+        try {
+          ws = new WebSocket(`ws://localhost:${port}`);
+        } catch (e) {
+          return;
+        }
+        sockets[port] = ws;
+        ws.onopen = () => {
+          ws.send(JSON.stringify(hello));
+          if (lastContext) ws.send(JSON.stringify(lastContext));
+          render();
+        };
+        ws.onmessage = (event) => {
+          let msg;
+          try {
+            msg = JSON.parse(event.data);
+          } catch (e) {
+            return;
+          }
+          if (msg.type === 'request') parent.postMessage({ pluginMessage: { type: 'request', port, request: msg } }, '*');
+        };
+        ws.onclose = () => {
+          if (sockets[port] === ws) delete sockets[port];
+          render();
+        };
+        ws.onerror = () => {};
+      }
+
+      window.onmessage = (event) => {
+        const msg = event.data && event.data.pluginMessage;
+        if (!msg) return;
+        if (msg.type === 'hello') {
+          hello = msg.payload;
+          PORTS.forEach(connect);
+          render();
+        } else if (msg.type === 'context') {
+          lastContext = msg.payload;
+          for (const port of openSockets()) sockets[port].send(JSON.stringify(lastContext));
+        } else if (msg.type === 'response') {
+          const ws = sockets[msg.port];
+          if (ws && ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(msg.payload));
+        }
+      };
+
+      setInterval(() => PORTS.forEach(connect), 3000);
+      parent.postMessage({ pluginMessage: { type: 'ready' } }, '*');
+      render();
+    </script>
+  </body>
+</html>

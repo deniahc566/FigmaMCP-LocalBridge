@@ -1,0 +1,190 @@
+{
+  "name": "Shop UI",
+  "lastModified": "2026-10-20T10:00:00Z",
+  "editorType": "figma",
+  "version": "123",
+  "nodes": {
+    "1:2": {
+      "document": {
+        "id": "1:2",
+        "name": "Product Card",
+        "type": "FRAME",
+        "absoluteBoundingBox": { "x": 100, "y": 100, "width": 320, "height": 420 },
+        "absoluteRenderBounds": { "x": 92, "y": 100, "width": 336, "height": 436 },
+        "layoutMode": "VERTICAL",
+        "itemSpacing": 16,
+        "paddingLeft": 24,
+        "paddingRight": 24,
+        "paddingTop": 24,
+        "paddingBottom": 24,
+        "primaryAxisSizingMode": "AUTO",
+        "counterAxisSizingMode": "FIXED",
+        "counterAxisAlignItems": "MIN",
+        "primaryAxisAlignItems": "MIN",
+        "layoutSizingHorizontal": "FIXED",
+        "layoutSizingVertical": "HUG",
+        "clipsContent": true,
+        "fills": [
+          { "type": "SOLID", "color": { "r": 1, "g": 1, "b": 1, "a": 1 }, "boundVariables": { "color": { "type": "VARIABLE_ALIAS", "id": "VariableID:1:5" } } }
+        ],
+        "strokes": [{ "type": "SOLID", "color": { "r": 0.9, "g": 0.9, "b": 0.9, "a": 1 } }],
+        "strokeWeight": 1,
+        "strokeAlign": "INSIDE",
+        "cornerRadius": 12,
+        "effects": [
+          { "type": "DROP_SHADOW", "visible": true, "radius": 16, "color": { "r": 0, "g": 0, "b": 0, "a": 0.08 }, "offset": { "x": 0, "y": 4 }, "spread": 0 }
+        ],
+        "boundVariables": { "itemSpacing": { "type": "VARIABLE_ALIAS", "id": "VariableID:1:6" } },
+        "styles": { "effect": "S:shadow" },
+        "children": [
+          {
+            "id": "1:3",
+            "name": "Photo",
+            "type": "RECTANGLE",
+            "absoluteBoundingBox": { "x": 124, "y": 124, "width": 272, "height": 180 },
+            "layoutSizingHorizontal": "FILL",
+            "layoutSizingVertical": "FIXED",
+            "fills": [{ "type": "IMAGE", "scaleMode": "FILL", "imageRef": "abc123" }],
+            "cornerRadius": 8
+          },
+          {
+            "id": "1:4",
+            "name": "Title",
+            "type": "TEXT",
+            "absoluteBoundingBox": { "x": 124, "y": 320, "width": 272, "height": 28 },
+            "layoutSizingHorizontal": "FILL",
+            "layoutSizingVertical": "HUG",
+            "characters": "Wireless Headphones",
+            "characterStyleOverrides": [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            "styleOverrideTable": { "1": { "fontWeight": 400, "italic": true } },
+            "style": {
+              "fontFamily": "Inter",
+              "fontStyle": "Semi Bold",
+              "fontWeight": 600,
+              "fontSize": 20,
+              "lineHeightPx": 28,
+              "lineHeightUnit": "PIXELS",
+              "letterSpacing": 0,
+              "textAutoResize": "HEIGHT",
+              "textAlignHorizontal": "LEFT",
+              "textAlignVertical": "TOP"
+            },
+            "fills": [{ "type": "SOLID", "color": { "r": 0.07, "g": 0.07, "b": 0.07, "a": 1 } }],
+            "styles": { "text": "S:title" }
+          },
+          {
+            "id": "1:5",
+            "name": "Row",
+            "type": "FRAME",
+            "absoluteBoundingBox": { "x": 124, "y": 364, "width": 272, "height": 40 },
+            "layoutMode": "HORIZONTAL",
+            "primaryAxisAlignItems": "SPACE_BETWEEN",
+            "counterAxisAlignItems": "CENTER",
+            "itemSpacing": 0,
+            "layoutSizingHorizontal": "FILL",
+            "layoutSizingVertical": "HUG",
+            "fills": [],
+            "children": [
+              {
+                "id": "1:6",
+                "name": "Price",
+                "type": "TEXT",
+                "absoluteBoundingBox": { "x": 124, "y": 372, "width": 60, "height": 24 },
+                "layoutSizingHorizontal": "HUG",
+                "layoutSizingVertical": "HUG",
+                "characters": "$199 {sale}",
+                "style": {
+                  "fontFamily": "Inter",
+                  "fontWeight": 700,
+                  "fontSize": 18,
+                  "lineHeightUnit": "INTRINSIC_%",
+                  "textAutoResize": "WIDTH_AND_HEIGHT"
+                },
+                "fills": [{ "type": "SOLID", "color": { "r": 0, "g": 0, "b": 0, "a": 0.9 } }]
+              },
+              {
+                "id": "1:7",
+                "name": "Button",
+                "type": "INSTANCE",
+                "componentId": "10:1",
+                "componentProperties": { "Variant#1:0": { "type": "VARIANT", "value": "Primary" } },
+                "absoluteBoundingBox": { "x": 266, "y": 364, "width": 130, "height": 40 },
+                "layoutMode": "HORIZONTAL",
+                "itemSpacing": 8,
+                "paddingLeft": 16,
+                "paddingRight": 16,
+                "paddingTop": 8,
+                "paddingBottom": 8,
+                "counterAxisAlignItems": "CENTER",
+                "layoutSizingHorizontal": "HUG",
+                "layoutSizingVertical": "HUG",
+                "fills": [{ "type": "SOLID", "color": { "r": 0.05, "g": 0.6, "b": 1, "a": 1 } }],
+                "cornerRadius": 8,
+                "children": [
+                  {
+                    "id": "I1:7;10:2",
+                    "name": "Icon / Cart",
+                    "type": "INSTANCE",
+                    "componentId": "20:1",
+                    "absoluteBoundingBox": { "x": 282, "y": 372, "width": 24, "height": 24 },
+                    "layoutSizingHorizontal": "FIXED",
+                    "layoutSizingVertical": "FIXED",
+                    "children": [
+                      {
+                        "id": "I1:7;10:3",
+                        "name": "Vector",
+                        "type": "VECTOR",
+                        "absoluteBoundingBox": { "x": 284, "y": 374, "width": 20, "height": 20 },
+                        "fills": [{ "type": "SOLID", "color": { "r": 1, "g": 1, "b": 1, "a": 1 } }]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "I1:7;10:4",
+                    "name": "Label",
+                    "type": "TEXT",
+                    "absoluteBoundingBox": { "x": 314, "y": 374, "width": 66, "height": 20 },
+                    "layoutSizingHorizontal": "HUG",
+                    "layoutSizingVertical": "HUG",
+                    "characters": "Add to cart",
+                    "style": { "fontFamily": "Inter", "fontWeight": 500, "fontSize": 14, "lineHeightPx": 20, "lineHeightUnit": "PIXELS", "textAutoResize": "WIDTH_AND_HEIGHT" },
+                    "fills": [{ "type": "SOLID", "color": { "r": 1, "g": 1, "b": 1, "a": 1 } }]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "1:8",
+            "name": "Badge",
+            "type": "FRAME",
+            "layoutPositioning": "ABSOLUTE",
+            "constraints": { "horizontal": "RIGHT", "vertical": "TOP" },
+            "absoluteBoundingBox": { "x": 356, "y": 112, "width": 52, "height": 24 },
+            "fills": [{ "type": "SOLID", "color": { "r": 1, "g": 0.2, "b": 0.2, "a": 1 } }],
+            "cornerRadius": 999
+          },
+          {
+            "id": "1:9",
+            "name": "Hidden note",
+            "type": "TEXT",
+            "visible": false,
+            "characters": "should not render",
+            "style": { "fontFamily": "Inter", "fontSize": 12 }
+          }
+        ]
+      },
+      "components": {
+        "10:1": { "key": "btnkey", "name": "Variant=Primary", "componentSetId": "10:0", "remote": false, "description": "" },
+        "20:1": { "key": "iconkey", "name": "Icon/Cart", "remote": true, "description": "" }
+      },
+      "componentSets": {
+        "10:0": { "key": "setkey", "name": "Button", "remote": false, "description": "Primary action button" }
+      },
+      "styles": {
+        "S:title": { "key": "k1", "name": "Heading/H3", "styleType": "TEXT", "remote": false },
+        "S:shadow": { "key": "k2", "name": "Elevation/Card", "styleType": "EFFECT", "remote": false }
+      }
+    }
+  }
+}
